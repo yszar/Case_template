@@ -16,13 +16,7 @@ class Filing():
         self.docxname = docxname
         self.link = link
 
-    def replacedocx(self):
-        doc = package.DocxTemplate(Filing.path + "/" + self.link + "/" +
-                                   self.docxname + ".docx")
-        # context = {'num': "122"}
-        doc.render(Filing.alljson)
-        pathname = package.docxmkdir.pathname
-        doc.save(pathname + '/' + self.docxname + '.docx')
+    
 
     # def __approval(self):
     #     doc = package.DocxTemplate(Filing.path + "/filing/2立案审批表.docx")
