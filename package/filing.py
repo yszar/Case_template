@@ -1,5 +1,7 @@
 # import package.docxmkdir
-import docxreplace
+import package.docxreplace
+from package.changejson import changejson
+import package.changejson
 # import package
 import os
 
@@ -8,8 +10,8 @@ import os
 
 class Filing():
     path = os.path.dirname(__file__)
-    alljson = docxreplace.docxreplace()
-    newpath = docxreplace.dirname
+    alljson = package.changejson.docxreplace()
+    newpath = package.docxreplace.dirname
 
     # docxname = ""
     # link = ""
@@ -26,4 +28,7 @@ class Filing():
     #     doc.save(pathname + '/2立案审批表.docx')
 
     def go(self):
-        docxreplace.replacedocx(self.link, self.docxname)
+        # oldjson = package.docxreplace.docxreplace()
+        # law_kay = oldjson["illegal_behavior"]
+        package.docxreplace.replacedocx(self.link, self.docxname)
+        changejson()
