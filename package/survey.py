@@ -2,8 +2,10 @@ import package.docxreplace
 
 
 class Survey():
-    def __init__(self, the_object):
+    def __init__(self, link, docxname, the_object):
         self.the_object = the_object
+        self.docxname = docxname
+        self.link = link
 
     def changejson(self):
         if self.the_object == '2':
@@ -21,4 +23,9 @@ class Survey():
                 json['business'] = '化妆品经营'
             elif json['category'] == '械':
                 json['business'] = '医疗器械经营'
-        return json
+            return json
+        if self.the_object == "1":
+            return package.docxreplace.docxreplace()
+
+    def go(self):
+        package.docxreplace.replacedocx(self.link, self.docxname, self.changejson())

@@ -1,15 +1,15 @@
 # import package.docxmkdir
-import docxreplace
-# import package
+# import docxreplace
+import package.docxreplace
 import os
 
 # from Case_template import docxmkdir
 
 
-class Filing():
+class Collegiate():
     path = os.path.dirname(__file__)
-    alljson = docxreplace.docxreplace()
-    newpath = docxreplace.dirname
+    alljson = package.docxreplace.alljson
+    newpath = package.docxreplace.dirname
 
     # docxname = ""
     # link = ""
@@ -26,4 +26,4 @@ class Filing():
     #     doc.save(pathname + '/2立案审批表.docx')
 
     def go(self):
-        docxreplace.replacedocx(self.link, self.docxname)
+        package.docxreplace.replacedocx(self.link, self.docxname)
