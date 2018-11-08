@@ -1,6 +1,6 @@
 # import json
 import os
-import pathlib
+# import pathlib
 import docxtpl
 # import package.changejson
 from package import variable
@@ -13,28 +13,8 @@ class Docxreplace():
     # self.alljson = docxreplace()
     alljson = variable.old_json
 
-    # global pathname
-    pathname = ''
-    # global dirname
-    dirname = ''
-
-    fullib_s = ''
-
-    def fullib(self, food_name, harmful):
-        if self.alljson['illegal_behavior'] == '超过食品安全标准限量的':
-            self.alljson['fullib'] = harmful + '超过食品安全标准限量的' + food_name
-        global fullib_s
-        fullib_s = self.alljson['fullib']
-        global dirname
-        dirname = self.alljson["company_name"] + self.alljson["fullib"] + '案'
-        global pathname
-        pathname = self.path + '/' + dirname
-
-        pathlib.Path(pathname).mkdir(parents=True, exist_ok=True)
-        # return pathname, dirname
-
     def replacedocx(self, link, docxname, alljson=alljson):
-        doc = docxtpl.DocxTemplate(self.path + "/" + "package/" + link + "/" +
-                                   docxname + ".docx")
+        doc = docxtpl.DocxTemplate(Docxreplace.path + "/" + "package/" + link +
+                                   "/" + docxname + ".docx")
         doc.render(self.alljson)
-        doc.save(pathname + '/' + docxname + '.docx')
+        doc.save(self.pathname + '/' + docxname + '.docx')

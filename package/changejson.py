@@ -1,37 +1,55 @@
-# import package.test
 import json
 import time
-import os
 from package import variable
+from package import get_dict_value
+import pathlib
 
 
-class changejson():
+class Changejson():
 
-    the_json = variable.old_json
+    old_json = variable.old_json
 
-    def lawopen(txt):
+    def __init__(self, food_name, harmful):
+        self.food_name = food_name
+        self.harmful = harmful
+
+    def lawopen(self, txt):
         # path = package.docxreplace.path
-        with open(path + txt, 'r') as f:
+        with open(variable.path + txt, 'r') as f:
             data = json.load(f)
         return data
 
-    def law_json(name):
-        law_name = lawopen("/law/" + name + ".json")
+    def law_json(self, name):
+        law_name = Changejson.lawopen("/law/" + name + ".json")
 
-        the_json['violation'] = get_dict_value(
-            law_name, the_json['illegal_behavior'] + ".violation")
-        the_json['violation_content'] = get_dict_value(
-            law_name, the_json['illegal_behavior'] + ".violation_content")
-        the_json['according'] = get_dict_value(
-            law_name, the_json['illegal_behavior'] + ".according")
-        the_json['according_content'] = get_dict_value(
-            law_name, the_json['illegal_behavior'] + ".according_content")
+        Changejson.old_json['violation'] = get_dict_value(
+            law_name, Changejson.old_json['illegal_behavior'] + ".violation")
+        Changejson.old_json['violation_content'] = get_dict_value(
+            law_name,
+            Changejson.old_json['illegal_behavior'] + ".violation_content")
+        Changejson.old_json['according'] = get_dict_value(
+            law_name, Changejson.old_json['illegal_behavior'] + ".according")
+        Changejson.old_json['according_content'] = get_dict_value(
+            law_name,
+            Changejson.old_json['illegal_behavior'] + ".according_content")
 
     def age(number):
         current = int(time.strftime("%Y"))
         year = int(number[6:10])
         age = current - year
         return age
+
+    def fullib(self, food_name, harmful):
+        if self.alljson['illegal_behavior'] == '超过食品安全标准限量的':
+            self.alljson['fullib'] = harmful + '超过食品安全标准限量的' + food_name
+        global fullib_s
+        fullib_s = self.alljson['fullib']
+        global dirname
+        dirname = self.alljson["company_name"] + self.alljson["fullib"] + '案'
+        global save_path
+        save_path = self.path + '/' + dirname
+        return save_path
+        # return save_path, dirname
 
     def changejson(*the_object):
         # json = package.docxreplace.package.docxreplace()
@@ -43,28 +61,29 @@ class changejson():
             name = input()
             print('输入授权委托人身份证号码')
             idnum = input()
-            the_json['legal_representative'] = name
-            the_json['identification_number'] = idnum
-            the_json['position'] = position
+            Changejson.old_json['legal_representative'] = name
+            Changejson.old_json['identification_number'] = idnum
+            Changejson.old_json['position'] = position
 
-        the_json['age'] = str(age(the_json['identification_number']))
+        Changejson.old_json['age'] = str(
+            Changejson.age(Changejson.old_json['identification_number']))
 
-        the_json['illegal_behavior'] = ''
+        Changejson.old_json['illegal_behavior'] = ''
 
-        if the_json['category'] == '食':
-            the_json['business'] = '食品经营'
-            the_json['law_name'] = '《中华人民共和国食品安全法》'
-            law_json('shi')
-        elif the_json['category'] == '药':
-            the_json['business'] = '药品经营'
-        elif the_json['category'] == '妆':
-            the_json['business'] = '化妆品经营'
-        elif the_json['category'] == '械':
-            the_json['business'] = '医疗器械经营'
-        # if the_json['illegal_behavior'] == '超过食品安全标准限量的':
+        if Changejson.old_json['category'] == '食':
+            Changejson.old_json['business'] = '食品经营'
+            Changejson.old_json['law_name'] = '《中华人民共和国食品安全法》'
+            Changejson.law_json('shi')
+        elif Changejson.old_json['category'] == '药':
+            Changejson.old_json['business'] = '药品经营'
+        elif Changejson.old_json['category'] == '妆':
+            Changejson.old_json['business'] = '化妆品经营'
+        elif Changejson.old_json['category'] == '械':
+            Changejson.old_json['business'] = '医疗器械经营'
+        # if Changejson.old_json['illegal_behavior'] == '超过食品安全标准限量的':
         #     print('输入超限食品名称')
         #     food_name = input()
         #     print('输入超限的元素')
         #     harmful = input()
-        #     the_json['fullib'] = harmful + '超过食品安全标准限量的' + food_name
-        return the_json
+        #     Changejson.old_json['fullib'] = harmful + '超过食品安全标准限量的' + food_name
+        return Changejson.old_json
