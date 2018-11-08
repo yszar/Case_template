@@ -2,34 +2,39 @@
 import os
 import pathlib
 import docxtpl
-import package.changejson
-
-path = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
-
-# alljson = docxreplace()
-alljson = package.changejson.changejson()
-pathname = ''
-dirname = ''
+# import package.changejson
+from package import variable
 
 
-def fullib(food_name, harmful):
-    if alljson['illegal_behavior'] == '超过食品安全标准限量的':
-        alljson['fullib'] = harmful + '超过食品安全标准限量的' + food_name
+class Docxreplace():
+    # def __init__(self, path, self.alljson, pathname, dirname, fullib_s):
+    path = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 
-    global dirname
-    dirname = alljson["company_name"] + alljson["fullib"] + '案'
-    global pathname
-    pathname = path + '/' + dirname
+    # self.alljson = docxreplace()
+    alljson = variable.old_json
 
-    pathlib.Path(pathname).mkdir(parents=True, exist_ok=True)
+    # global pathname
+    pathname = ''
+    # global dirname
+    dirname = ''
 
+    fullib_s = ''
 
-aj = package.changejson.docxreplace()
+    def fullib(self, food_name, harmful):
+        if self.alljson['illegal_behavior'] == '超过食品安全标准限量的':
+            self.alljson['fullib'] = harmful + '超过食品安全标准限量的' + food_name
+        global fullib_s
+        fullib_s = self.alljson['fullib']
+        global dirname
+        dirname = self.alljson["company_name"] + self.alljson["fullib"] + '案'
+        global pathname
+        pathname = self.path + '/' + dirname
 
+        pathlib.Path(pathname).mkdir(parents=True, exist_ok=True)
+        # return pathname, dirname
 
-def replacedocx(link, docxname, alljson=alljson):
-    doc = docxtpl.DocxTemplate(path + "/" + "package/" + link + "/" +
-                               docxname + ".docx")
-    doc.render(alljson)
-    doc.save(pathname + '/' + docxname + '.docx')
-
+    def replacedocx(self, link, docxname, alljson=alljson):
+        doc = docxtpl.DocxTemplate(self.path + "/" + "package/" + link + "/" +
+                                   docxname + ".docx")
+        doc.render(self.alljson)
+        doc.save(pathname + '/' + docxname + '.docx')
