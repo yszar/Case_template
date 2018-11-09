@@ -2,7 +2,7 @@ import json
 import time
 from package import variable
 from package import get_dict_value
-import pathlib
+# import pathlib
 
 
 class Changejson():
@@ -13,23 +13,23 @@ class Changejson():
         self.food_name = food_name
         self.harmful = harmful
 
-    def lawopen(self, txt):
+    def lawopen(txt):
         # path = package.docxreplace.path
         with open(variable.path + txt, 'r') as f:
             data = json.load(f)
         return data
 
-    def law_json(self, name):
+    def law_json(name):
         law_name = Changejson.lawopen("/law/" + name + ".json")
 
-        Changejson.old_json['violation'] = get_dict_value(
+        Changejson.old_json['violation'] = get_dict_value.get_dict_value(
             law_name, Changejson.old_json['illegal_behavior'] + ".violation")
-        Changejson.old_json['violation_content'] = get_dict_value(
+        Changejson.old_json['violation_content'] = get_dict_value.get_dict_value(
             law_name,
             Changejson.old_json['illegal_behavior'] + ".violation_content")
-        Changejson.old_json['according'] = get_dict_value(
+        Changejson.old_json['according'] = get_dict_value.get_dict_value(
             law_name, Changejson.old_json['illegal_behavior'] + ".according")
-        Changejson.old_json['according_content'] = get_dict_value(
+        Changejson.old_json['according_content'] = get_dict_value.get_dict_value(
             law_name,
             Changejson.old_json['illegal_behavior'] + ".according_content")
 
@@ -40,14 +40,14 @@ class Changejson():
         return age
 
     def fullib(self, food_name, harmful):
-        if self.alljson['illegal_behavior'] == '超过食品安全标准限量的':
-            self.alljson['fullib'] = harmful + '超过食品安全标准限量的' + food_name
+        if self.old_json['illegal_behavior'] == '超过食品安全标准限量的':
+            self.old_json['fullib'] = harmful + '超过食品安全标准限量的' + food_name
         global fullib_s
-        fullib_s = self.alljson['fullib']
+        fullib_s = self.old_json['fullib']
         global dirname
-        dirname = self.alljson["company_name"] + self.alljson["fullib"] + '案'
+        dirname = self.old_json["company_name"] + self.old_json["fullib"] + '案'
         global save_path
-        save_path = self.path + '/' + dirname
+        save_path = variable.path + '/' + dirname
         return save_path
         # return save_path, dirname
 

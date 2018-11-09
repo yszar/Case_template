@@ -17,4 +17,4 @@ class Docxreplace():
         doc = docxtpl.DocxTemplate(Docxreplace.path + "/" + "package/" + link +
                                    "/" + docxname + ".docx")
         doc.render(self.alljson)
-        doc.save(self.pathname + '/' + docxname + '.docx')
+        doc.save(Docxreplace.path + '/' + docxname + '.docx')
