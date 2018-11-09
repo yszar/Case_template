@@ -1,20 +1,19 @@
-# import json
-import os
-# import pathlib
+# import os
 import docxtpl
-# import package.changejson
 from package import variable
 
+# class Docxreplace():
+#     path = variable.path
 
-class Docxreplace():
-    # def __init__(self, path, self.alljson, pathname, dirname, fullib_s):
-    path = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+#     def __init__(self, new_json):
+#         # path = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 
-    # self.alljson = docxreplace()
-    alljson = variable.old_json
+#         # self.alljson = docxreplace()
+#         self.new_json = new_json
 
-    def replacedocx(self, link, save_path, docxname, alljson=alljson):
-        doc = docxtpl.DocxTemplate(Docxreplace.path + "/" + "package/" + link +
-                                   "/" + docxname + ".docx")
-        doc.render(self.alljson)
-        doc.save(save_path + "/" + docxname + '.docx')
+
+def replacedocx(save_path, docxname, new_json):
+    doc = docxtpl.DocxTemplate(variable.path + "/" + "package/" + 'docxs' +
+                               "/" + docxname + ".docx")
+    doc.render(new_json)
+    doc.save(save_path + "/" + docxname + '.docx')
