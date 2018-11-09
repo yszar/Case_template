@@ -2,6 +2,7 @@ import json
 import time
 from package import variable
 from package import get_dict_value
+
 # import pathlib
 
 
@@ -24,14 +25,16 @@ class Changejson():
 
         Changejson.old_json['violation'] = get_dict_value.get_dict_value(
             law_name, Changejson.old_json['illegal_behavior'] + ".violation")
-        Changejson.old_json['violation_content'] = get_dict_value.get_dict_value(
-            law_name,
-            Changejson.old_json['illegal_behavior'] + ".violation_content")
+        Changejson.old_json[
+            'violation_content'] = get_dict_value.get_dict_value(
+                law_name,
+                Changejson.old_json['illegal_behavior'] + ".violation_content")
         Changejson.old_json['according'] = get_dict_value.get_dict_value(
             law_name, Changejson.old_json['illegal_behavior'] + ".according")
-        Changejson.old_json['according_content'] = get_dict_value.get_dict_value(
-            law_name,
-            Changejson.old_json['illegal_behavior'] + ".according_content")
+        Changejson.old_json[
+            'according_content'] = get_dict_value.get_dict_value(
+                law_name,
+                Changejson.old_json['illegal_behavior'] + ".according_content")
 
     def age(number):
         current = int(time.strftime("%Y"))
@@ -39,18 +42,7 @@ class Changejson():
         age = current - year
         return age
 
-    def fullib(self, food_name, harmful):
-        if self.old_json['illegal_behavior'] == '超过食品安全标准限量的':
-            self.old_json['fullib'] = harmful + '超过食品安全标准限量的' + food_name
-        global fullib_s
-        fullib_s = self.old_json['fullib']
-        global dirname
-        dirname = self.old_json["company_name"] + self.old_json["fullib"] + '案'
-        global save_path
-        save_path = variable.path + '/' + dirname
-        return save_path
-        # return save_path, dirname
-
+    
     def changejson(*the_object):
         # json = package.docxreplace.package.docxreplace()
 

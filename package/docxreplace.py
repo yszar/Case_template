@@ -13,8 +13,8 @@ class Docxreplace():
     # self.alljson = docxreplace()
     alljson = variable.old_json
 
-    def replacedocx(self, link, docxname, alljson=alljson):
+    def replacedocx(self, link, save_path, docxname, alljson=alljson):
         doc = docxtpl.DocxTemplate(Docxreplace.path + "/" + "package/" + link +
                                    "/" + docxname + ".docx")
         doc.render(self.alljson)
-        doc.save(Docxreplace.path + '/' + docxname + '.docx')
+        doc.save(save_path + "/" + docxname + '.docx')

@@ -4,7 +4,6 @@ from package import variable
 from package import docxreplace
 import package.changejson
 import os
-import pathlib
 
 
 class Filing():
@@ -17,20 +16,24 @@ class Filing():
     # docxname = ""
     # link = ""
 
-    def __init__(self, link, docxname, *food_har):
+    def __init__(self, docxname):
         self.docxname = docxname
-        self.link = link
         self.food_har = food_har
 
     def go(self):
-        # oldjson = package.docxreplace.docxreplace()
-        # law_kay = oldjson["illegal_behavior"]
-        temp_path = changejson.Changejson(self.food_har[0], self.food_har[1])
-        save_path = temp_path.fullib(self.food_har[0], self.food_har[1])
-        pathlib.Path(save_path).mkdir(parents=True, exist_ok=True)
+        if self.food_har is not None:
+            # oldjson = package.docxreplace.docxreplace()
+            # law_kay = oldjson["illegal_behavior"]
+            temp_path = changejson.Changejson(self.food_har[0],
+                                              self.food_har[1])
+            save_path = temp_path.fullib(self.food_har[0], self.food_har[1]) + '案'
+        else:
+            save_path = Filing.alljson['company_name'] + Filing.alljson[
+                'illegal_behavior'] + '案'
+
 
         Docxreplace = docxreplace.Docxreplace()
-        Docxreplace.replacedocx(self.link, self.docxname)
+        Docxreplace.replacedocx(self.link, save_path, self.docxname)
         if self.food_har:
             Changejson = changejson.Changejson(self.food_har[0],
                                                self.food_har[1])
