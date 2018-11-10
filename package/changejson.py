@@ -43,7 +43,7 @@ def changejson(new_json, *the_object):
         new_json['gender'] = '男'
     new_json['age'] = str(age(new_json['identification_number']))
 
-    # new_json['illegal_behavior'] = ''
+
 
     if new_json['category'] == '食':
         new_json['business'] = '食品经营'

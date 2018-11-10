@@ -1,6 +1,7 @@
 # import os
 import docxtpl
 from package import variable
+import docx
 
 # class Docxreplace():
 #     path = variable.path

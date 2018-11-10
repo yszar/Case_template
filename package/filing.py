@@ -4,8 +4,11 @@ from package import variable
 from package import docxreplace
 from package import loadlaw
 from package import mkdir
-import package.changejson
+from package import happening
+# import package.changejson
 import os
+
+# import docx
 
 
 class Filing():
@@ -19,6 +22,8 @@ class Filing():
     def go(self):
         # json中增加违反和依据的法律内容
         save_path = mkdir.save_path()
+        if self.docxname == '2立案审批表':
+            Filing.old_json['happening'] = happening.happening()
         law_name = Filing.old_json['category']
         if Filing.old_json['violation'] == "":
             Filing.old_json = loadlaw.law_json(law_name)
@@ -58,6 +63,8 @@ class Survey():
         if self.name_id_num == ():
             old_json['legal_representative'] = old_json['templr']
             old_json['identification_number'] = old_json['tempid']
+
+        old_json['happening'] = happening.happening()
         new_json = changejson.changejson(old_json)
 
         docxreplace.replacedocx(save_path, self.docxname, new_json)
@@ -86,6 +93,8 @@ class Collegiate():
         law_name = Filing.old_json['category']
         if Filing.old_json['violation'] == "":
             Filing.old_json = loadlaw.law_json(law_name)
+        Filing.old_json['happening'] = happening.happening()
+
         new_json = changejson.changejson(Filing.old_json)
         docxreplace.replacedocx(save_path, self.docxname, new_json)
 
@@ -104,6 +113,8 @@ class Inform():
         law_name = Filing.old_json['category']
         if Filing.old_json['violation'] == "":
             Filing.old_json = loadlaw.law_json(law_name)
+        Filing.old_json['happening'] = happening.happening()
+
         new_json = changejson.changejson(Filing.old_json)
         docxreplace.replacedocx(save_path, self.docxname, new_json)
 
@@ -122,5 +133,7 @@ class Execution():
         law_name = Filing.old_json['category']
         if Filing.old_json['violation'] == "":
             Filing.old_json = loadlaw.law_json(law_name)
+        Filing.old_json['happening'] = happening.happening()
+
         new_json = changejson.changejson(Filing.old_json)
         docxreplace.replacedocx(save_path, self.docxname, new_json)
