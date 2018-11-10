@@ -64,72 +64,63 @@ class Survey():
 
 
 class Collegiate():
+    # path = os.path.dirname(__file__)
+    # alljson = variable.old_json
+
+    # def __init__(self, link, docxname):
+    #     self.docxname = docxname
+    #     self.link = link
+
+    # def go(self):
+    #     package.docxreplace.replacedocx(self.link, self.docxname)
     path = os.path.dirname(__file__)
-    alljson = variable.old_json
 
-    # newpath = docxreplace.Docxreplace().dirname
+    old_json = variable.docxreplace()
 
-    # docxname = ""
-    # link = ""
-
-    def __init__(self, link, docxname):
+    def __init__(self, docxname):
         self.docxname = docxname
-        self.link = link
-
-    # def __approval(self):
-    #     doc = package.DocxTemplate(Filing.path + "/filing/2立案审批表.docx")
-    #     # context = {'company_name': Filing.alljson['company_name']}
-    #     doc.render(Filing.alljson)
-    #     pathname = package.docxmkdir.pathname
-    #     doc.save(pathname + '/2立案审批表.docx')
 
     def go(self):
-        package.docxreplace.replacedocx(self.link, self.docxname)
+        # json中增加违反和依据的法律内容
+        save_path = mkdir.save_path()
+        law_name = Filing.old_json['category']
+        if Filing.old_json['violation'] == "":
+            Filing.old_json = loadlaw.law_json(law_name)
+        new_json = changejson.changejson(Filing.old_json)
+        docxreplace.replacedocx(save_path, self.docxname, new_json)
 
 
 class Inform():
     path = os.path.dirname(__file__)
-    alljson = docxreplace.variable.old_json
 
-    # newpath = docxreplace.Docxreplace().dirname
+    old_json = variable.docxreplace()
 
-    # docxname = ""
-    # link = ""
-
-    def __init__(self, link, docxname):
+    def __init__(self, docxname):
         self.docxname = docxname
-        self.link = link
-
-    # def __approval(self):
-    #     doc = package.DocxTemplate(Filing.path + "/filing/2立案审批表.docx")
-    #     # context = {'company_name': Filing.alljson['company_name']}
-    #     doc.render(Filing.alljson)
-    #     pathname = package.docxmkdir.pathname
-    #     doc.save(pathname + '/2立案审批表.docx')
 
     def go(self):
-        package.docxreplace.replacedocx(self.link, self.docxname)
+        # json中增加违反和依据的法律内容
+        save_path = mkdir.save_path()
+        law_name = Filing.old_json['category']
+        if Filing.old_json['violation'] == "":
+            Filing.old_json = loadlaw.law_json(law_name)
+        new_json = changejson.changejson(Filing.old_json)
+        docxreplace.replacedocx(save_path, self.docxname, new_json)
 
 
 class Execution():
     path = os.path.dirname(__file__)
-    alljson = docxreplace.variable.old_json
 
-    # newpath = docxreplace.Docxreplace().dirname
+    old_json = variable.docxreplace()
 
-    # docxname = ""
-    # link = ""
-
-    def __init__(self, link, docxname):
+    def __init__(self, docxname):
         self.docxname = docxname
-        self.link = link
-
-    # def __approval(self):
-    #     doc = package.DocxTemplate(Filing.path + "/filing/2立案审批表.docx")
-    #     # context = {'company_name': Filing.alljson['company_name']}
-    #     doc.render(Filing.alljson)
-    #     pathname = package.docxmkdir.pathname
-    #     doc.save(pathname + '/2立案审批表.docx')
 
     def go(self):
-        package.docxreplace.replacedocx(self.link, self.docxname)
+        # json中增加违反和依据的法律内容
+        save_path = mkdir.save_path()
+        law_name = Filing.old_json['category']
+        if Filing.old_json['violation'] == "":
+            Filing.old_json = loadlaw.law_json(law_name)
+        new_json = changejson.changejson(Filing.old_json)
+        docxreplace.replacedocx(save_path, self.docxname, new_json)

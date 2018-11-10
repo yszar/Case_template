@@ -1,6 +1,6 @@
-from package import collegiate
+from package import filing
+# import package.docxreplace
 
-collegiate = collegiate.Collegiate('collegiate', '18案件合议记录')
-# source.link = "filing"
-# source.docxname = "1案件来源登记表"
+collegiate = filing.Collegiate('18案件合议记录')
+
 collegiate.go()

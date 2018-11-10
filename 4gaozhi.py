@@ -1,12 +1,10 @@
-from package import inform
+from package import filing
 
-hearing = inform.Inform('inform', '22听证告知书')
-# source.link = "filing"
-# source.docxname = "1案件来源登记表"
+hearing = filing.Inform('22听证告知书')
 hearing.go()
 
-advance_notice = inform.Inform('inform', '26行政处罚事先告知书')
+advance_notice = filing.Inform('26行政处罚事先告知书')
 advance_notice.go()
 
-receipt = inform.Inform('inform', '38事先告知送达回执')
+receipt = filing.Inform('38事先告知送达回执')
 receipt.go()

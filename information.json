@@ -11,6 +11,7 @@
     "age":"",
     "telephone_number":"15390667107",
     "identification_number":"62272619660816123X",
+    "business_license":"6201021999999",
     "tempid":"",
     "gender":"",
     "num":"111",
@@ -21,5 +22,6 @@
     "violation_content":"",
     "according":"",
     "according_content":"",
+    "license_number":"",
     "date_time":["2018","11","7","10","30"]
 }
