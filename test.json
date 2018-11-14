@@ -1,7 +1,7 @@
 {
     "company_name":"兰州雅诗莲医疗美容门诊部（普通合伙）",
-    "category":"械",
-    "illegal_behavior":"超过食品安全标准限量的",
+    "category":"食",
+    "illegal_behavior":"",
     "food":"粉条",
     "har":"经营铝的残留量",
     "address":"武都路166号",
@@ -11,9 +11,9 @@
     "business_license":"6201021999999",
     "num":"111",
     "position":"负责人",
+    "illegal_label":"进货时未查验许可证和相关证明文件",
     "leadership":"",
     "happening":"",
-    "tempid":"",
     "gender":"",
     "business":"",
     "law_name":"",
@@ -24,6 +24,8 @@
     "license_number":"",
     "fullib":"",
     "templr":"",
+    "tempid":"",
+    "temp_position":"",
     "age":"",
     "date_time":["2018","11","7","10","30"]
 }
