@@ -18,9 +18,7 @@ if links == '1':
     allfunc.replacedocx(save_path, '1案件来源登记表', new_json)
 
 elif links == '2':
-    happening = allfunc.extract_file(
-        allfunc.preproccess_file(
-            allfunc.get_file(save_path + '/1案件来源登记表.docx')))
+    happening = allfunc.get_happening(save_path + '/1案件来源登记表.docx')
     # new_json = allfunc.changejson(old_json)
     new_json['happening'] = happening[0]
     allfunc.replacedocx(save_path, '2立案审批表', new_json)
@@ -30,33 +28,32 @@ elif links == '3':
     tempjson = allfunc.changejson(old_json, ren)
     allfunc.replacedocx(save_path, '7询问调查笔录', tempjson)
 
-    happening = allfunc.extract_file(
-        allfunc.preproccess_file(
-            allfunc.get_file(save_path + '/1案件来源)登记表.docx')))
+    happening = allfunc.get_happening(save_path + '/1案件来源登记表.docx')
     new_json['happening'] = happening[0]
+
+    new_json['legal_representative'], new_json['templr'] = new_json[
+        'templr'], new_json['legal_representative']
+    new_json['identification_number'], new_json['tempid'] = new_json[
+        'tempid'], new_json['identification_number']
+    new_json['position'], new_json['temp_position'] = new_json[
+        'temp_position'], new_json['position']
 
     allfunc.replacedocx(save_path, '9案件调查终结报告', new_json)
 
 elif links == '4':
-    happening = allfunc.extract_file(
-        allfunc.preproccess_file(
-            allfunc.get_file(save_path + '/1案件来源)登记表.docx')))
+    happening = allfunc.get_happening(save_path + '/1案件来源登记表.docx')
     new_json['happening'] = happening[0]
     allfunc.replacedocx(save_path, '18案件合议记录', new_json)
 
 elif links == '5':
-    happening = allfunc.extract_file(
-        allfunc.preproccess_file(
-            allfunc.get_file(save_path + '/1案件来源)登记表.docx')))
+    happening = allfunc.get_happening(save_path + '/1案件来源登记表.docx')
     new_json['happening'] = happening[0]
     allfunc.replacedocx(save_path, '22听证告知书', new_json)
     allfunc.replacedocx(save_path, '26行政处罚事先告知书', new_json)
     allfunc.replacedocx(save_path, '38事先告知送达回执', new_json)
 
 elif links == '6':
-    happening = allfunc.extract_file(
-        allfunc.preproccess_file(
-            allfunc.get_file(save_path + '/1案件来源)登记表.docx')))
+    happening = allfunc.get_happening(save_path + '/1案件来源登记表.docx')
     new_json['happening'] = happening[0]
     allfunc.replacedocx(save_path, '27行政处罚决定审批表', new_json)
     allfunc.replacedocx(save_path, '28行政处罚决定书', new_json)
@@ -65,8 +62,6 @@ elif links == '6':
 
 else:
     other = input('输入文书名称：')
-    happening = allfunc.extract_file(
-        allfunc.preproccess_file(
-            allfunc.get_file(save_path + '/1案件来源)登记表.docx')))
+    happening = allfunc.get_happening(save_path + '/1案件来源登记表.docx')
     new_json['happening'] = happening[0]
     allfunc.replacedocx(save_path, other, new_json)

@@ -120,7 +120,7 @@ def age(number):
 def changejson(new_json, *the_object):
     # json = package.docxreplace.package.docxreplace()
 
-    if the_object == '2':
+    if the_object == ('2',):
         print('输入授权委托人职务')
         new_json['temp_position'] = input()
         print('输入授权委托人姓名')
@@ -178,16 +178,16 @@ def all_json_name():
     print(allname)
 
 
-def get_file(path):
+def get_happening(path):
     '''获取文件'''
     # 获得word文档
     docxfile = docx.Document(path)
     # print(file)
-    return docxfile
+#     return docxfile
 
 
-def preproccess_file(docxfile):
-    '''文件预处理'''
+# def preproccess_file(docxfile):
+#     '''文件预处理'''
     # 输出文档段落数（行数）
     # paragraph_sum = len(file.paragraphs)
     # print(paragraph_sum)
@@ -201,11 +201,11 @@ def preproccess_file(docxfile):
     # 合并字符串
     file_text = ''.join(para_list)
     # print(file_text)
-    return file_text
+    # return file_text
 
 
-def extract_file(file_text):
-    '''提取内容'''
+# def extract_file(file_text):
+#     '''提取内容'''
     # 使用正则提取关键字后面的数字
     result = re.findall('基本情况介绍：(.*)附件：', file_text)
     # print(result)
