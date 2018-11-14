@@ -55,14 +55,14 @@ class Survey():
         law_name = old_json['category']
         if old_json['violation'] == "":
             old_json = loadlaw.law_json(law_name)
-        if self.name_id_num:
+        if self.name_id_num != ():
             old_json['templr'] = old_json['legal_representative']
             old_json['tempid'] = old_json['identification_number']
             old_json['legal_representative'] = self.name_id_num[0]
             old_json['identification_number'] = self.name_id_num[1]
-        if self.name_id_num == ():
-            old_json['legal_representative'] = old_json['templr']
-            old_json['identification_number'] = old_json['tempid']
+        # if self.name_id_num == ():
+        #     old_json['legal_representative'] = old_json['templr']
+        #     old_json['identification_number'] = old_json['tempid']
 
         old_json['happening'] = happening.happening()
         new_json = changejson.changejson(old_json)
