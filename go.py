@@ -31,12 +31,13 @@ elif links == '3':
     happening = allfunc.get_happening(save_path + '/1案件来源登记表.docx')
     new_json['happening'] = happening[0]
 
-    new_json['legal_representative'], new_json['templr'] = new_json[
-        'templr'], new_json['legal_representative']
-    new_json['identification_number'], new_json['tempid'] = new_json[
-        'tempid'], new_json['identification_number']
-    new_json['position'], new_json['temp_position'] = new_json[
-        'temp_position'], new_json['position']
+    if ren == '2':
+        new_json['legal_representative'], new_json['templr'] = new_json[
+            'templr'], new_json['legal_representative']
+        new_json['identification_number'], new_json['tempid'] = new_json[
+            'tempid'], new_json['identification_number']
+        new_json['position'], new_json['temp_position'] = new_json[
+            'temp_position'], new_json['position']
 
     allfunc.replacedocx(save_path, '9案件调查终结报告', new_json)
 
