@@ -1,4 +1,40 @@
 from package import allfunc
+from flask import Flask, request, render_template, send_file
+import io
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField, SelectField
+from wtforms.validators import Required
+from flask_bootstrap import Bootstrap
+
+app = Flask(__name__)
+app.config['SECRET_KEY'] = '111111'
+
+bootstrap = Bootstrap(app)
+
+
+class NameForm(FlaskForm):
+    company_name = StringField('店名')
+    category = SelectField(
+        '选择三品一械类别',
+        validators=[Required()],
+        choices=[('0', '食'), ('1', '药'), ('2', '械'), ('3', '妆')])
+    illegal_behavior = SelectField(
+        '选择违法行为',
+        validators=[Required()],
+        choices=[('0', '食'), ('1', '药'), ('2', '械'), ('3', '妆')])
+    class_name = StringField('班级：')
+    gender = StringField('性别：')
+    school_num = StringField('学号：')
+    school_time_year = StringField('在校起始时间年')
+    school_time_month = StringField('在校起始时间月')
+    school_time_year1 = StringField('在校截止时间年')
+    school_time_month1 = StringField('在校截止时间月')
+    home_address = StringField('家庭通讯地址：')
+    personal_tel = StringField('个人联系方式：')
+    home_num = StringField('家庭联系方式：')
+    reason = StringField('本人申请理由：')
+    submit = SubmitField('申请表下载')
+    submit1 = SubmitField('清单下载')
 
 # 列出当前目录下所有json文件
 allfunc.all_json_name()

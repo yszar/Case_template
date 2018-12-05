@@ -46,6 +46,10 @@ wrapt = "*"
 yapf = "*"
 zope-interface = "*"
 service_identity = "*"
+flask = "*"
+python-docx = "*"
+flask-wtf = "*"
+flask-bootstrap = "*"
 
 [dev-packages]
 

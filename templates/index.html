@@ -1,0 +1,43 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}flask生成word{% endblock %}
+
+{% block body %}
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+
+</div>
+{% endblock %}
+
+
+    <div class="container">
+    <form action="{{ url_for('index') }}" method="POST" name="test">
+    {{ form.csrf_token }}
+    {{ wtf.form_field(form.name, class="form-control") }}
+    {{ wtf.form_field(form.status, class="form-control", onChange="getCity()") }}
+    {{ wtf.form_field(form.status1, class="form-control") }}
+    {{ wtf.form_field(form.specialty,class="form-control") }}
+    {{ wtf.form_field(form.class_name,class="form-control") }}
+    {{ wtf.form_field(form.gender,class="form-control") }}
+    {{ wtf.form_field(form.school_num,class="form-control") }}
+    {{ wtf.form_field(form.school_time_year,class="form-control") }}
+    {{ wtf.form_field(form.school_time_month,class="form-control") }}
+    {{ wtf.form_field(form.school_time_year1,class="form-control") }}
+    {{ wtf.form_field(form.school_time_month1,class="form-control") }}
+    {{ wtf.form_field(form.home_address,class="form-control") }}
+    {{ wtf.form_field(form.personal_tel,class="form-control") }}
+    {{ wtf.form_field(form.home_num,class="form-control") }}
+    {{ wtf.form_field(form.reason,class="form-control") }}
+   <input class="btn btn-default" type="submit" name="key" value="申请表下载">
+   <input class="btn btn-default" type="submit" name="key" value="清单下载">
+
+    </form>
+    </div>
+
+{% block scripts %}
+{{ super() }}
+<script src="static/js/sltlaw.js"></script>
+{% endblock %}
+
+{% endblock %}
