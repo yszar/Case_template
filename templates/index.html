@@ -12,23 +12,21 @@
 
 
     <div class="container">
-    <form action="{{ url_for('index') }}" method="POST" name="test">
+    <form action="{{ url_for('index') }}" method="POST" name="illegal_behavior">
     {{ form.csrf_token }}
     {{ wtf.form_field(form.name, class="form-control") }}
-    {{ wtf.form_field(form.status, class="form-control", onChange="getCity()") }}
-    {{ wtf.form_field(form.status1, class="form-control") }}
-    {{ wtf.form_field(form.specialty,class="form-control") }}
-    {{ wtf.form_field(form.class_name,class="form-control") }}
-    {{ wtf.form_field(form.gender,class="form-control") }}
-    {{ wtf.form_field(form.school_num,class="form-control") }}
-    {{ wtf.form_field(form.school_time_year,class="form-control") }}
-    {{ wtf.form_field(form.school_time_month,class="form-control") }}
-    {{ wtf.form_field(form.school_time_year1,class="form-control") }}
-    {{ wtf.form_field(form.school_time_month1,class="form-control") }}
-    {{ wtf.form_field(form.home_address,class="form-control") }}
-    {{ wtf.form_field(form.personal_tel,class="form-control") }}
-    {{ wtf.form_field(form.home_num,class="form-control") }}
-    {{ wtf.form_field(form.reason,class="form-control") }}
+    {{ wtf.form_field(form.category, class="form-control", onChange="get_illegal_behavior()") }}
+    {{ wtf.form_field(form.illegal_behavior, class="form-control") }}
+    {{ wtf.form_field(form.food,class="form-control") }}
+    {{ wtf.form_field(form.har,class="form-control") }}
+    {{ wtf.form_field(form.address,class="form-control") }}
+    {{ wtf.form_field(form.legal_representative,class="form-control") }}
+    {{ wtf.form_field(form.telephone_number,class="form-control") }}
+    {{ wtf.form_field(form.identification_number,class="form-control") }}
+    {{ wtf.form_field(form.business_license,class="form-control") }}
+    {{ wtf.form_field(form.num,class="form-control") }}
+    {{ wtf.form_field(form.position,class="form-control") }}
+    {{ wtf.form_field(form.illegal_label,class="form-control") }}
    <input class="btn btn-default" type="submit" name="key" value="申请表下载">
    <input class="btn btn-default" type="submit" name="key" value="清单下载">
 

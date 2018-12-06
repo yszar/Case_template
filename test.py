@@ -4,43 +4,57 @@ import io
 from docx.shared import Inches, Pt
 from docx.oxml.ns import qn
 from docx.enum.text import WD_ALIGN_PARAGRAPH
-import time
+# import time
 import datetime
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, SelectField
 from wtforms.validators import Required
 from flask_bootstrap import Bootstrap
 from urllib.parse import quote
+from flask_nav import Nav
+from flask_nav.elements import Subgroup, Separator, View, Navbar
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '111111'
 
 bootstrap = Bootstrap(app)
+nav = Nav()
+nav.register_element(
+    'top',
+    Navbar(
+        u'Flask入门',
+        View(u'主页', 'home'),
+        View(u'关于', 'about'),
+        Subgroup(
+            u'项目',
+            View(u'项目一', 'about'),
+            Separator(),
+            View(u'项目二', 'service'),
+        ),
+    ))
 
 
 class NameForm(FlaskForm):
     name = StringField('姓名')
-    status = SelectField(
-        '按类型查询',
+    category = SelectField(
+        '选择三品一械类别：',
         validators=[Required()],
-        choices=[('0', '全部'), ('1', '待审核'), ('2', '认证成功'), ('3', '认证失败')])
-    status1 = SelectField(
-        '按类型查询', validators=[Required()], choices=[
-            ('0', '全部'),
+        choices=[('0', '请选择'), ('1', '食'), ('2', '药'), ('3', '械'), ('4', '妆')])
+    illegal_behavior = SelectField(
+        '选择违法行为：', validators=[Required()], choices=[
+            ('0', '请选择'),
         ])
-    departments = StringField('院系')
-    specialty = StringField('专业')
-    class_name = StringField('班级：')
-    gender = StringField('性别：')
-    school_num = StringField('学号：')
-    school_time_year = StringField('在校起始时间年')
-    school_time_month = StringField('在校起始时间月')
-    school_time_year1 = StringField('在校截止时间年')
-    school_time_month1 = StringField('在校截止时间月')
-    home_address = StringField('家庭通讯地址：')
-    personal_tel = StringField('个人联系方式：')
-    home_num = StringField('家庭联系方式：')
-    reason = StringField('本人申请理由：')
+    food = StringField('食品名称')
+    har = StringField('超标的物质')
+    address = StringField('地址：')
+    legal_representative = StringField('法人（负责人）姓名：')
+    telephone_number = StringField('负责人电话号码：')
+    identification_number = StringField('法人（负责人）身份证号')
+    business_license = StringField('营业执照号')
+    num = StringField('立案号')
+    position = StringField('职务')
+    illegal_label = StringField('违法标签')
     submit = SubmitField('申请表下载')
     submit1 = SubmitField('清单下载')
 

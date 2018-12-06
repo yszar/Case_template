@@ -50,6 +50,8 @@ flask = "*"
 python-docx = "*"
 flask-wtf = "*"
 flask-bootstrap = "*"
+bootstrap-flask = "*"
+flask-nav = "*"
 
 [dev-packages]
 
