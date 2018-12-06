@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "200d8e607ea556bb6d4fd6f0ba58709780eb9fdd4b6f80fb4947d71a0fc5d265"
+            "sha256": "2287a1fff9cced162698dab01199e697094cfce426a2452e5be782e054d83d1a"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -47,14 +47,6 @@
             ],
             "index": "pypi",
             "version": "==0.7.0"
-        },
-        "bootstrap-flask": {
-            "hashes": [
-                "sha256:1f7462261b8104687807ce74b397270e7ade07c491ad7d53f215940d8433d756",
-                "sha256:ce5cf19c46b8d385923dc2f9ca76b92fc08c1a8d7dcb5d177325a85a94d71045"
-            ],
-            "index": "pypi",
-            "version": "==1.0.9"
         },
         "certifi": {
             "hashes": [
@@ -464,6 +456,14 @@
             ],
             "index": "pypi",
             "version": "==0.8.7"
+        },
+        "python-dotenv": {
+            "hashes": [
+                "sha256:4f3582904d08dac5ab4c9aa44cb17ce056c9a35e585cfda6183d80054d247307",
+                "sha256:cb8cd327109898c7725f76c5256a081e8a9efe72ebbf127f8d1221ceb7f38bf2"
+            ],
+            "index": "pypi",
+            "version": "==0.10.0"
         },
         "queuelib": {
             "hashes": [

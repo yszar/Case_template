@@ -36,6 +36,7 @@ class NameForm(FlaskForm):
     submit = SubmitField('申请表下载')
     submit1 = SubmitField('清单下载')
 
+
 # 列出当前目录下所有json文件
 allfunc.all_json_name()
 

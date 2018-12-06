@@ -49,9 +49,9 @@ service_identity = "*"
 flask = "*"
 python-docx = "*"
 flask-wtf = "*"
-flask-bootstrap = "*"
-bootstrap-flask = "*"
 flask-nav = "*"
+python-dotenv = "*"
+flask-bootstrap = "*"
 
 [dev-packages]
 

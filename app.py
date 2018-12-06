@@ -12,8 +12,7 @@ from wtforms.validators import Required
 from flask_bootstrap import Bootstrap
 from urllib.parse import quote
 from flask_nav import Nav
-from flask_nav.elements import Subgroup, Separator, View, Navbar
-
+from flask_nav.elements import View, Navbar
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '111111'
@@ -23,20 +22,22 @@ nav = Nav()
 nav.register_element(
     'top',
     Navbar(
-        u'Flask入门',
-        View(u'主页', 'home'),
-        View(u'关于', 'about'),
-        Subgroup(
-            u'项目',
-            View(u'项目一', 'about'),
-            Separator(),
-            View(u'项目二', 'service'),
-        ),
-    ))
+        u'行政处罚案件制作系统',
+        View(u'案件来源登记表', 'index'),
+        View(u'立案阶段', 'index'),
+        View(u'调查阶段', 'index'),
+        View(u'合议阶段', 'index'),
+        View(u'告知阶段', 'index'),
+        View(u'执行阶段', 'index'),
+        View(u'其他文书', 'index'),
+    ),
+)
+
+nav.init_app(app)
 
 
 class NameForm(FlaskForm):
-    name = StringField('姓名')
+    company_name = StringField('姓名')
     category = SelectField(
         '选择三品一械类别：',
         validators=[Required()],
@@ -55,50 +56,52 @@ class NameForm(FlaskForm):
     num = StringField('立案号')
     position = StringField('职务')
     illegal_label = StringField('违法标签')
-    submit = SubmitField('申请表下载')
+    submit = SubmitField('提交信息')
     submit1 = SubmitField('清单下载')
 
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    name = None
+    company_name = None
     form = NameForm()
     if form.validate_on_submit():
         # if request.form['stname'] == 'submit':
         # name = NameForm.data['name']
-        name = form.name.data
-        departments = form.departments.data
-        specialty = form.specialty.data
-        class_name = form.class_name.data
-        gender = form.gender.data
-        school_num = form.school_num.data
-        school_time_year = form.school_time_year.data
-        school_time_month = form.school_time_month.data
-        school_time_year1 = form.school_time_year1.data
-        school_time_month1 = form.school_time_month1.data
-        home_address = form.home_address.data
-        personal_tel = form.personal_tel.data
-        home_num = form.home_num.data
-        reason = form.reason.data
+        #        json_name = str(form.name.data) + str(form.illegal_behavior.data)
+        company_name = form.company_name.data
+        category = form.category.choices[int(form.category.data)][1]
+        illegal_behavior = pass
+        # specialty = form.specialty.data
+        # class_name = form.class_name.data
+        # gender = form.gender.data
+        # school_num = form.school_num.data
+        # school_time_year = form.school_time_year.data
+        # school_time_month = form.school_time_month.data
+        # school_time_year1 = form.school_time_year1.data
+        # school_time_month1 = form.school_time_month1.data
+        # home_address = form.home_address.data
+        # personal_tel = form.personal_tel.data
+        # home_num = form.home_num.data
+        # reason = form.reason.data
 
-        form.name.data = ''
-        form.departments.data = ''
-        form.specialty.data = ''
-        form.class_name.data = ''
-        form.gender.data = ''
-        form.school_num.data = ''
-        form.school_time_year.data = ''
-        form.school_time_month.data = ''
-        form.school_time_year1.data = ''
-        form.school_time_month1.data = ''
-        form.home_address.data = ''
-        form.personal_tel.data = ''
-        form.home_num.data = ''
-        form.reason.data = ''
+        # form.name.data = ''
+        # form.departments.data = ''
+        # form.specialty.data = ''
+        # form.class_name.data = ''
+        # form.gender.data = ''
+        # form.school_num.data = ''
+        # form.school_time_year.data = ''
+        # form.school_time_month.data = ''
+        # form.school_time_year1.data = ''
+        # form.school_time_month1.data = ''
+        # form.home_address.data = ''
+        # form.personal_tel.data = ''
+        # form.home_num.data = ''
+        # form.reason.data = ''
 
         nt = datetime.datetime.now()
 
-        if request.form['key'] == '申请表下载':
+        if request.form['key'] == '提交信息':
             document = Document()
             document.styles['Normal'].font.name = u'宋体'
             document.styles['Normal']._element.rPr.rFonts.set(
@@ -217,7 +220,7 @@ def index():
             # document.save(name + 'XX申请表.docx')
             f = io.BytesIO()
             document.save(f)
-            length = f.tell()
+            # length = f.tell()
             f.seek(0)
             filename = quote(name + '申请表.doc')
             rv = send_file(f, as_attachment=True, attachment_filename=filename)
@@ -283,7 +286,7 @@ def index():
 
             f = io.BytesIO()
             document1.save(f)
-            length = f.tell()
+            # length = f.tell()
             f.seek(0)
             filename = quote(name + '清单.doc')
             rv = send_file(f, as_attachment=True, attachment_filename=filename)
@@ -292,7 +295,7 @@ def index():
                     filename)
             return rv
 
-    return render_template('index.html', form=form, name=name)
+    return render_template('index.html', form=form, company_name=company_name)
 
 
 if __name__ == '__main__':

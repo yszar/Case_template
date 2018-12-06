@@ -2,19 +2,20 @@
 {% import "bootstrap/wtf.html" as wtf %}
 
 {% block title %}flask生成word{% endblock %}
+{% block styles %}
+{{ super() }}
+<link href="https://stackpath.bootstrapcdn.com/bootswatch/3.3.7/yeti/bootstrap.min.css" rel="stylesheet" integrity="sha384-HzUaiJdCTIY/RL2vDPRGdEQHHahjzwoJJzGUkYjHVzTwXFQ2QN/nVgX7tzoMW3Ov" crossorigin="anonymous">
+{% endblock %}
 
 {% block body %}
-{% block navbar %}
-<div class="navbar navbar-inverse" role="navigation">
 
-</div>
-{% endblock %}
+{% block navbar %} {{ nav.top.render() }} {% endblock %}
 
 
     <div class="container">
     <form action="{{ url_for('index') }}" method="POST" name="illegal_behavior">
     {{ form.csrf_token }}
-    {{ wtf.form_field(form.name, class="form-control") }}
+    {{ wtf.form_field(form.company_name, class="form-control") }}
     {{ wtf.form_field(form.category, class="form-control", onChange="get_illegal_behavior()") }}
     {{ wtf.form_field(form.illegal_behavior, class="form-control") }}
     {{ wtf.form_field(form.food,class="form-control") }}
@@ -27,7 +28,7 @@
     {{ wtf.form_field(form.num,class="form-control") }}
     {{ wtf.form_field(form.position,class="form-control") }}
     {{ wtf.form_field(form.illegal_label,class="form-control") }}
-   <input class="btn btn-default" type="submit" name="key" value="申请表下载">
+   <input class="btn btn-default" type="submit" name="key" value="信息提交">
    <input class="btn btn-default" type="submit" name="key" value="清单下载">
 
     </form>
