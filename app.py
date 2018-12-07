@@ -29,29 +29,25 @@ app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 db = SQLAlchemy(app)
 
 
-class Role(db.Model):
+class store_manager(db.Model):
     # 定义表名
-    __tablename__ = 'test'
+    __tablename__ = 'store_manager'
     # 定义列对象
     #    id = db.Column(db.String(64), primary_key=True)
-    name = db.Column(db.String(64), primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
+    legal_representative = db.Column(db.String(64))
+    telephone_number = db.Column(db.String(64))
+    position = db.Column(db.String(64))
+    identification_number = db.Column(db.String(64))
+    gender = db.Column(db.String(64))
 
     # user = db.relationship('User', backref='test')
 
     # repr()方法显示一个可读字符串，虽然不是完全必要，不过用于调试和测试还是很不错的。
     def __repr__(self):
-        return '<test {}> '.format(self.name)
+        return '<store_manager {}> '.format(self.name)
 
 
-admin_role = Role(name='Admin')
-mod_role = Role(name='Moderator')
-user_role = Role(name='User')
-
-db.session.add_all([admin_role, mod_role, user_role])
-
-db.session.commit()
-
-print(user_role)
 # 数据库测试结束
 
 bootstrap = Bootstrap(app)
@@ -107,7 +103,10 @@ def index():
         #        json_name = str(form.name.data) + str(form.illegal_behavior.data)
         company_name = form.company_name.data
         category = form.category.choices[int(form.category.data)][1]
-        illegal_behavior = 1
+        legal_representative = form.legal_representative.data
+        telephone_number = form.telephone_number.data
+        position = form.position.data
+        identification_number = form.identification_number.data
         # specialty = form.specialty.data
         # class_name = form.class_name.data
         # gender = form.gender.data
@@ -135,8 +134,23 @@ def index():
         # form.personal_tel.data = ''
         # form.home_num.data = ''
         # form.reason.data = ''
-
         nt = datetime.datetime.now()
+        # admin_role = Role(name='Admin')
+        # mod_role = Role(name='Moderator')
+        # user_role = Role(name='User')
+        # legal_representative_SM = store_manager(
+        #     legal_representative=legal_representative)
+        # telephone_number_SM = store_manager(telephone_number=telephone_number)
+        # position_SM = store_manager(position=position)
+        # identification_number_SM = store_manager(
+        #     identification_number=identification_number)
+        test = store_manager(
+            legal_representative=legal_representative,
+            telephone_number=telephone_number,
+            position=position,
+            identification_number=identification_number)
+        db.session.add_all([test])
+        db.session.commit()
 
         if request.form['key'] == '提交信息':
             document = Document()
