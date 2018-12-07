@@ -13,9 +13,46 @@ from flask_bootstrap import Bootstrap
 from urllib.parse import quote
 from flask_nav import Nav
 from flask_nav.elements import View, Navbar
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '111111'
+
+# 数据库测试开始
+# 这里登陆的是root用户，要填上自己的密码，MySQL的默认端口是3306，填上之前创建的数据库名jianshu,连接方式参考 \
+# http://docs.sqlalchemy.org/en/latest/dialects/mysql.html
+app.config['SQLALCHEMY_DATABASE_URI'] = (
+    'mysql+pymysql://root:Andylau1987212!@39.107.81.83:3306/caseDB')
+# 设置这一项是每次请求结束后都会自动提交数据库中的变动
+app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
+# 实例化
+db = SQLAlchemy(app)
+
+
+class Role(db.Model):
+    # 定义表名
+    __tablename__ = 'test'
+    # 定义列对象
+    #    id = db.Column(db.String(64), primary_key=True)
+    name = db.Column(db.String(64), primary_key=True)
+
+    # user = db.relationship('User', backref='test')
+
+    # repr()方法显示一个可读字符串，虽然不是完全必要，不过用于调试和测试还是很不错的。
+    def __repr__(self):
+        return '<test {}> '.format(self.name)
+
+
+admin_role = Role(name='Admin')
+mod_role = Role(name='Moderator')
+user_role = Role(name='User')
+
+db.session.add_all([admin_role, mod_role, user_role])
+
+db.session.commit()
+
+print(user_role)
+# 数据库测试结束
 
 bootstrap = Bootstrap(app)
 nav = Nav()
@@ -70,7 +107,7 @@ def index():
         #        json_name = str(form.name.data) + str(form.illegal_behavior.data)
         company_name = form.company_name.data
         category = form.category.choices[int(form.category.data)][1]
-        illegal_behavior = pass
+        illegal_behavior = 1
         # specialty = form.specialty.data
         # class_name = form.class_name.data
         # gender = form.gender.data
