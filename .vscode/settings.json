@@ -1,3 +1,9 @@
 {
-  "python.pythonPath": "/Users/apple/Case_template/.venv/bin/python"
+  "python.pythonPath": "/Users/apple/Case_template/.venv/bin/python",
+  "python.autoComplete.extraPaths": [
+    "/Users/apple/Case_template/.venv/lib/python3.6",
+    "/Users/apple/Case_template/.venv/lib/python3.6/site-packages"
+  ],
+  "python.venvFolders": ["envs", ".pyenv", ".direnv", ".venv"],
+  "python.venvPath": "/Users/apple/Case_template/.venv"
 }

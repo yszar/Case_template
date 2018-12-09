@@ -1,0 +1,21 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}案件来源{% endblock %}
+{% block styles %}
+{{ super() }}
+<link href="https://stackpath.bootstrapcdn.com/bootswatch/3.3.7/yeti/bootstrap.min.css" rel="stylesheet" integrity="sha384-HzUaiJdCTIY/RL2vDPRGdEQHHahjzwoJJzGUkYjHVzTwXFQ2QN/nVgX7tzoMW3Ov" crossorigin="anonymous">
+{% endblock %}
+
+{% block body %}
+
+{% block navbar %} {{ nav.top.render() }} {% endblock %}
+
+<h2>hello boy!<h2>
+
+{% block scripts %}
+{{ super() }}
+<script src="static/js/sltlaw.js"></script>
+{% endblock %}
+
+{% endblock %}
