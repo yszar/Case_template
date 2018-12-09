@@ -72,7 +72,8 @@ nav.register_element(
     'top',
     Navbar(
         u'行政处罚案件制作系统',
-        View(u'案件来源登记表', 'index'),
+        View(u'首页', 'index'),
+        View(u'案件来源登记表', 'case_source'),
         View(u'立案阶段', 'index'),
         View(u'调查阶段', 'index'),
         View(u'合议阶段', 'index'),
