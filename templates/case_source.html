@@ -15,6 +15,9 @@
 <div class="container">
     <h1>详细列表<h1>
     <div id="toolbar">
+        <button id="add" class="btn btn-danger">
+            <i class="glyphicon glyphicon-plus"></i> 新增
+        </button>
         <button id="remove" class="btn btn-danger" disabled>
             <i class="glyphicon glyphicon-remove"></i> 删除
         </button>
@@ -39,7 +42,6 @@
            data-response-handler="responseHandler">
     </table>
 </div>
-<h2>hello boy!<h2>
 
 {% block scripts %}
 {{ super() }}
@@ -50,6 +52,7 @@
 <script>
     var $table = $('#table'),
         $remove = $('#remove'),
+        $add = $('#add'),
         selections = [];
     function initTable() {
         $table.bootstrapTable({
@@ -146,6 +149,16 @@
                 values: ids
             });
             $remove.prop('disabled', true);
+        });
+        $add.click(function () {
+        var index = $table.bootstrapTable('getData').length;
+        $table.bootstrapTable('insertRow', {
+            index: index,
+            row: {
+                id: '',
+                wareName: ''
+                }
+            });
         });
         $(window).resize(function () {
             $table.bootstrapTable('resetView', {
